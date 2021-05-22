@@ -52,7 +52,10 @@ app.get('/api/commits', async (req, res) => {
 });
 
 app.use('*', (_, res) => {
-  res.json(`This is Qinjun's 4-mile project!`);
+  res.json({
+    message: `This is Qinjun's 4-mile project!`,
+    sampleDataUrl: `/api/data?language=python&repo_count=10&commit_count=30`
+  });
 });
 
 // For GCP deploy reason, need to choose port 8080
