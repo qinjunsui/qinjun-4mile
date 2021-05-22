@@ -138,11 +138,11 @@ Sample test error url:
 }))
 
 // Caes 1: Input stage
-if (repo_count <= 0 || !Number.isInteger(repo_count)) {
-  errMsgs.push(`repo_count mush be a positive integer, ${repo_count} is invalid.`)
+if (repo_count < 0 || Number(req.query.repo_count) === 0 || !Number.isInteger(repo_count)) {
+  errMsgs.push(`repo_count mush be a positive integer, ${req.query.repo_count} is invalid.`)
 }
-if (commit_count <= 0 || !Number.isInteger(commit_count)) {
-  errMsgs.push(`commit_count mush be a positive integer, ${commit_count} is invalid.`)
+if (commit_count < 0 || Number(req.query.commit_count) === 0 || !Number.isInteger(commit_count)) {
+  errMsgs.push(`commit_count mush be a positive integer, ${req.query.commit_count} is invalid.`)
 }
 if (errMsgs.length) {
   return res.json({
