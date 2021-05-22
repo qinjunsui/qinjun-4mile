@@ -1,8 +1,10 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const API = 'https://api.github.com';
 /** HTTP util */
-const token = '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';
+const token = process.env.GITHUB_TOKEN;
 const httpGet = (url, Accept, errorHandle) =>
   axios
     .get(url, { headers: { Authorization: `Token ${token}`, Accept } })

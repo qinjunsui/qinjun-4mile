@@ -2,5 +2,6 @@ package-lock.json
 node_modules
 .vscode
 .gcloudignore
+.env
 app.yaml
 deploy.sh

@@ -120,6 +120,7 @@ Notes: for testing purpose, I limited the repo count and commit count to a small
 ## API Token Application
 - Go to Github -> Settings Page -> Developer settings
 - Go to Personal access tokens -> Generate new token
+- For security reason, there will be a .env file in my local and will be removed on git push
 
 ## Error Handling
 
