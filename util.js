@@ -7,8 +7,8 @@ const API = 'https://api.github.com';
 const token = process.env.GITHUB_TOKEN;
 const httpGet = (url, Accept, errorHandle) =>
   axios
-    .get(url, {headers: {Authorization: `Token ${token}`, Accept}})
-    .then(({data}) => data)
+    .get(url, { headers: { Authorization: `Token ${token}`, Accept } })
+    .then(({ data }) => data)
     .catch((err) => ({
       status: err.response.status,
       stage: errorHandle.stage,
@@ -25,7 +25,7 @@ const buildQuery = (data) => {
 /** Repository */
 export const getRepositories = async (language) => {
   // https://docs.github.com/en/rest/reference/search#search-repositories--parameters
-  const q = buildQuery({language, sort: 'stars'});
+  const q = buildQuery({ language, sort: 'stars' });
   const url = `${API}/search/repositories?q=${q}`;
   const accept = 'application/vnd.github.v3+json';
   const errorHandle = {
@@ -51,7 +51,7 @@ export const getCustomizedRepositories = async (
     .slice(0, repoCount);
   // Step 2: construct the data
   const repositories = topNRepositories.map(
-    ({full_name, stargazers_count, html_url}) => ({
+    ({ full_name, stargazers_count, html_url }) => ({
       repository_name: full_name,
       star_count: stargazers_count,
       repo_url: html_url,
@@ -68,7 +68,7 @@ export const getCustomizedRepositories = async (
   // Step 3+: Async optimization
   const promises = repositories.map((repo) => {
     return new Promise(async (resolve) => {
-      const {repository_name} = repo;
+      const { repository_name } = repo;
       const authors = await getCustomizedCommits(repository_name, commitCount);
       repo.authors = authors;
       resolve();
@@ -92,8 +92,8 @@ export const getCommits = async (repo) => {
 
 export const getCustomizedCommits = async (repo, commitCount) => {
   const res = await getCommits(repo);
-  return res.slice(0, commitCount).map(({commit}) => {
-    const {author, tree, url} = commit;
-    return {name: author.name, commit_hash: tree.sha, commit_url: url};
+  return res.slice(0, commitCount).map(({ commit }) => {
+    const { author, tree, url } = commit;
+    return { name: author.name, commit_hash: tree.sha, commit_url: url };
   });
 };

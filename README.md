@@ -41,26 +41,26 @@ npm start
 
 For the finish endpoint
 
-* http://localhost:5000/api/data?language=javascript&repo_count=20&commit_count=50
-* http://localhost:5000/api/data?language=python&repo_count=10&commit_count=30
-* http://localhost:5000/api/data?language=go&repo_count=5&commit_count=15
+* http://localhost:8080/api/data?language=javascript&repo_count=20&commit_count=50
+* http://localhost:8080/api/data?language=python&repo_count=10&commit_count=30
+* http://localhost:8080/api/data?language=go&repo_count=5&commit_count=15
 
 For commits
 
-* http://localhost:5000/api/commits?repo=vuejs/vue
-* http://localhost:5000/api/commits?repo=ytdl-org/youtube-dl
+* http://localhost:8080/api/commits?repo=vuejs/vue
+* http://localhost:8080/api/commits?repo=ytdl-org/youtube-dl
 
 For repositories
 
-* http://localhost:5000/api/repositories?language=go
-* http://localhost:5000/api/repositories?language=ruby
-* http://localhost:5000/api/repositories?language=php
+* http://localhost:8080/api/repositories?language=go
+* http://localhost:8080/api/repositories?language=ruby
+* http://localhost:8080/api/repositories?language=php
 
 ##  JSON response
 
 Sample endpoint
 
-* http://localhost:5000/api/data?language=php&repo_count=2&commit_count=3
+* http://localhost:8080/api/data?language=php&repo_count=2&commit_count=3
 
 Notes: for testing purpose, I limited the repo count and commit count to a small number.
 
@@ -126,8 +126,8 @@ Notes: for testing purpose, I limited the repo count and commit count to a small
 Invalid language input
 Sample test error url:
 
-* http://localhost:5000/api/data?language=lata&repo_count=8&commit_count=a
-* http://localhost:5000/api/repositories?language=lata
+* http://localhost:8080/api/data?language=lata&repo_count=8&commit_count=a
+* http://localhost:8080/api/repositories?language=lata
 
 ```js
 .catch((err) => ({

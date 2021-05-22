@@ -55,5 +55,6 @@ app.use('*', (_, res) => {
   res.json(`This is Qinjun's 4-mile project!`);
 });
 
-const PORT = 5000;
+// For GCP deploy reason, need to choose port 8080
+const PORT = 8080;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
