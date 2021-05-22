@@ -54,7 +54,9 @@ app.get('/api/commits', async (req, res) => {
 app.use('*', (_, res) => {
   res.json({
     message: `This is Qinjun's 4-mile project!`,
-    sampleDataUrl: `/api/data?language=python&repo_count=10&commit_count=30`
+    sampleDataUrl: `/api/data?language=python&repo_count=10&commit_count=30`,
+    sampleRepositoriesUrl: `/api/repositories?language=ruby`,
+    sampleCommitsUrl: `/api/commits?repo=vuejs/vue`
   });
 });
 
