@@ -1,7 +1,7 @@
 # 4 Mile Coding Challenge
 
-Author: Qinjun Sui
-Date: 05/21/2021
+- Author: Qinjun Sui
+- Date: 05/21/2021
 
 ## Demo
 
@@ -116,6 +116,10 @@ Notes: for testing purpose, I limited the repo count and commit count to a small
   ]
 }
 ```
+
+## API Token Application
+- Go to Github -> Settings Page -> Developer settings
+- Go to Personal access tokens -> Generate new token
 
 ## Error Handling
 
