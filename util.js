@@ -12,7 +12,7 @@ const httpGet = (url, Accept, errorHandle) =>
     .catch((err) => ({
       status: err.response.status,
       stage: errorHandle.stage,
-      error: [errorHandle.msg, err.response.statusText].join(','),
+      error: [errorHandle.msg, err.response.statusText].join('. '),
     }));
 const buildQuery = (data) => {
   const items = [];

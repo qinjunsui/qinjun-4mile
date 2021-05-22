@@ -137,11 +137,28 @@ Sample test error url:
     error: [errorHandle.msg, err.response.statusText].join(','),
 }))
 
+// Caes 1: Input stage
+if (repo_count <= 0 || !Number.isInteger(repo_count)) {
+  errMsgs.push(`repo_count mush be a positive integer, ${repo_count} is invalid.`)
+}
+if (commit_count <= 0 || !Number.isInteger(commit_count)) {
+  errMsgs.push(`commit_count mush be a positive integer, ${commit_count} is invalid.`)
+}
+if (errMsgs.length) {
+  return res.json({
+    status: 500,
+    stage: 'Query params retrieving',
+    error: errMsgs.join(' ')
+  })
+}
+
+// Case 2: Get repositories stage
 errorHandle = {
     stage: 'Get repositories by language',
     msg: 'Invalid language',
 };
 
+// Case 3: Get commits stage
 errorHandle = {
     stage: 'Get commits by repo name',
     msg: 'Cannot access repo',

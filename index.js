@@ -1,5 +1,6 @@
 import compression from 'compression';
 import Express from 'express';
+import cors from 'cors';
 
 import {
   getCommits,
@@ -9,6 +10,7 @@ import {
 
 const app = Express();
 app.use(compression());
+app.use(cors()); // enable for frontend, in case we want to do the next step.
 
 /**
  * @url /api/data
@@ -20,6 +22,18 @@ app.get('/api/data', async (req, res) => {
   const language = req.query.language || 'javascript';
   const repo_count = Number(req.query.repo_count) || 20;
   const commit_count = Number(req.query.commit_count) || 50;
+  const errMsgs = []
+  if (repo_count <= 0 || !Number.isInteger(repo_count)) {
+    errMsgs.push(`repo_count mush be a positive integer, ${repo_count} is invalid.`)
+  }
+  if (commit_count <= 0 || !Number.isInteger(commit_count)) {
+    errMsgs.push(`commit_count mush be a positive integer, ${commit_count} is invalid.`)
+  }
+  if (errMsgs.length) {
+    return res.json({
+      status: 500, stage: 'Query params retrieving', error: errMsgs.join(' ')
+    })
+  }
   const results = await getCustomizedRepositories(
     language,
     repo_count,
