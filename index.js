@@ -71,7 +71,7 @@ app.get('/api/repositories', async (req, res) => {
  * @query {string} repo
  */
 app.get('/api/commits', async (req, res) => {
-  const repo = req.query.repo || '';
+  const repo = req.query.repo || '';  // 'vuejs/vue'
   if (!repo) {
     return res.json({
       status: 500,
